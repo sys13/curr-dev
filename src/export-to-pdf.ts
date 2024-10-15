@@ -5,7 +5,7 @@ import { writeAll } from "jsr:@std/io/write-all";
 const FILE_NAME = "output.pdf";
 
 export async function exportPresentationToPDF(presentationId: string) {
-  // Initialize Google Drive API
+  // @ts-expect-error idk why
   const drive = google.drive({ version: "v3", auth });
 
   try {

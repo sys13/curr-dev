@@ -1,23 +1,12 @@
-export function createBatchUpdateForSlide({
-  fileName,
-  content,
-  title,
-  insertionIndex,
-}: {
-  fileName: string;
-  content: string;
-  title: string;
-  insertionIndex: number;
-}) {
-  const fileNameWithoutExtension = fileName.split(".")[0];
-  const titleSlideId = `${fileNameWithoutExtension}title_1`;
-  const titleId = `${fileNameWithoutExtension}text_box_1`;
-  const bodyId = `${fileNameWithoutExtension}text_box_2`;
+export function createMainTitleSlide({ title }: { title: string }) {
+  const titleSlideId = `main_title_title_1`;
+  const titleId = `main_title_text_box_1`;
+  const bodyId = `main_title_text_box_2`;
   return [
     {
       createSlide: {
         objectId: titleSlideId,
-        insertionIndex,
+        insertionIndex: 0,
         slideLayoutReference: {
           predefinedLayout: "BLANK",
         },
@@ -80,13 +69,6 @@ export function createBatchUpdateForSlide({
             unit: "PT",
           },
         },
-      },
-    },
-    {
-      insertText: {
-        objectId: bodyId,
-        insertionIndex: 0,
-        text: content,
       },
     },
   ];
