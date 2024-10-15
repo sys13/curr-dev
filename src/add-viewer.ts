@@ -1,10 +1,8 @@
-// Import the required modules
 import { google } from "npm:googleapis";
 import { auth } from "./get-auth.ts";
 
-// Function to add viewer permission to a presentation
 export async function addViewer(presentationId: string, viewerEmail: string) {
-  // Initialize Google Drive API
+  // @ts-expect-error idk why
   const drive = google.drive({ version: "v3", auth });
 
   try {
@@ -12,9 +10,9 @@ export async function addViewer(presentationId: string, viewerEmail: string) {
     await drive.permissions.create({
       fileId: presentationId,
       requestBody: {
-        role: "writer", // 'reader' gives view-only access
-        type: "user", // Can also be 'group', 'domain', etc.
-        emailAddress: viewerEmail, // The email address to grant access
+        role: "reader",
+        type: "user",
+        emailAddress: viewerEmail,
       },
     });
 

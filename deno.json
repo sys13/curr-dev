@@ -9,6 +9,8 @@
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
+    "@std/encoding": "jsr:@std/encoding@^1.0.5",
+    "@std/front-matter": "jsr:@std/front-matter@^1.0.5",
     "@std/streams": "jsr:@std/streams@^1.0.7",
     "googleapis": "npm:googleapis@^144.0.0",
     "zod": "npm:zod@^3.23.8"
