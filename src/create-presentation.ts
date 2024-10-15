@@ -1,4 +1,4 @@
-import { google, slides_v1 } from "npm:googleapis";
+import { google } from "npm:googleapis";
 
 export async function createSlideDeck({
   requests,
@@ -25,17 +25,17 @@ export async function createSlideDeck({
 
     const presentationId = await response.data.presentationId;
 
-    await slides.presentations.batchUpdate(
-      {
-        presentationId,
-        requestBody: {
-          requests,
-        },
+    if (!presentationId) {
+      console.error("Failed to create presentation");
+      return;
+    }
+
+    await slides.presentations.batchUpdate({
+      presentationId,
+      requestBody: {
+        requests,
       },
-      {
-        auth,
-      }
-    );
+    });
 
     console.log(`Created presentation with ID: ${presentationId}`);
 

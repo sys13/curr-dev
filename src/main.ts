@@ -22,5 +22,9 @@ for (const course of courseInfos) {
     requests: [createMainTitleSlide({ title: course.title }), ...slideRequests],
     auth,
   });
+  if (!presentationId) {
+    console.error(`Failed to create presentation for ${course.title}`);
+    continue;
+  }
   exportPresentationToPDF(presentationId);
 }
