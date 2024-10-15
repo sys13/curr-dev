@@ -2,7 +2,8 @@ import { google } from "npm:googleapis";
 import { auth } from "./get-auth.ts";
 import { writeAll } from "jsr:@std/io/write-all";
 
-// Export the presentation as a PDF
+const FILE_NAME = "output.pdf";
+
 export async function exportPresentationToPDF(presentationId: string) {
   // Initialize Google Drive API
   const drive = google.drive({ version: "v3", auth });
@@ -18,7 +19,7 @@ export async function exportPresentationToPDF(presentationId: string) {
     );
 
     // Create a file to write to
-    const file = await Deno.open("output.txt", { write: true, create: true });
+    const file = await Deno.create(FILE_NAME);
 
     try {
       // Stream the response to the file
@@ -29,8 +30,7 @@ export async function exportPresentationToPDF(presentationId: string) {
     } finally {
       file.close();
     }
-    const filePath = "output.pdf";
-    console.log(`Presentation exported to: ${filePath}`);
+    console.log(`Presentation exported to: ${FILE_NAME}`);
   } catch (error) {
     console.error("Error exporting presentation to PDF:", error);
   }
