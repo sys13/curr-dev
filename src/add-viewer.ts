@@ -2,7 +2,6 @@ import { google } from 'npm:googleapis'
 import { auth } from './get-auth.ts'
 
 export async function addViewer(presentationId: string, viewerEmail: string) {
-  // @ts-expect-error idk why
   const drive = google.drive({ version: 'v3', auth })
 
   try {

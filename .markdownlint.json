@@ -1,4 +1,3 @@
 {
-  "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/main/schema/markdownlint-cli2-config-schema.json",
-  "ignores": ["node_modules/**/*", "dist/**/*", "coverage/**/*"]
+  "MD033": false
 }
