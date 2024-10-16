@@ -1,31 +1,31 @@
 export function createMainTitleSlide({ title }: { title: string }) {
-  const titleSlideId = `main_title_title_1`;
-  const titleId = `main_title_text_box_1`;
-  const bodyId = `main_title_text_box_2`;
+  const titleSlideId = `main_title_title_1`
+  const titleId = `main_title_text_box_1`
+  const bodyId = `main_title_text_box_2`
   return [
     {
       createSlide: {
         objectId: titleSlideId,
         insertionIndex: 0,
         slideLayoutReference: {
-          predefinedLayout: "BLANK",
+          predefinedLayout: 'BLANK',
         },
       },
     },
     {
       createShape: {
         objectId: titleId,
-        shapeType: "TEXT_BOX",
+        shapeType: 'TEXT_BOX',
         elementProperties: {
           pageObjectId: titleSlideId,
           size: {
             height: {
               magnitude: 100,
-              unit: "PT",
+              unit: 'PT',
             },
             width: {
               magnitude: 500,
-              unit: "PT",
+              unit: 'PT',
             },
           },
           transform: {
@@ -33,7 +33,7 @@ export function createMainTitleSlide({ title }: { title: string }) {
             scaleY: 1,
             translateX: 50,
             translateY: 50,
-            unit: "PT",
+            unit: 'PT',
           },
         },
       },
@@ -48,17 +48,17 @@ export function createMainTitleSlide({ title }: { title: string }) {
     {
       createShape: {
         objectId: bodyId,
-        shapeType: "TEXT_BOX",
+        shapeType: 'TEXT_BOX',
         elementProperties: {
           pageObjectId: titleSlideId,
           size: {
             height: {
               magnitude: 200,
-              unit: "PT",
+              unit: 'PT',
             },
             width: {
               magnitude: 500,
-              unit: "PT",
+              unit: 'PT',
             },
           },
           transform: {
@@ -66,10 +66,10 @@ export function createMainTitleSlide({ title }: { title: string }) {
             scaleY: 1,
             translateX: 50,
             translateY: 200,
-            unit: "PT",
+            unit: 'PT',
           },
         },
       },
     },
-  ];
+  ]
 }

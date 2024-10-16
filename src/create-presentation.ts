@@ -1,19 +1,19 @@
-import { google } from "npm:googleapis";
+import { google } from 'npm:googleapis'
 
 export async function createSlideDeck({
   requests,
   courseName,
   auth,
 }: {
-  courseName: string;
+  courseName: string
   // deno-lint-ignore no-explicit-any
-  requests: any;
+  requests: any
   // deno-lint-ignore no-explicit-any
-  auth: any;
+  auth: any
 }) {
   // Initialize Google Slides API
-  const slides = google.slides({ version: "v1" });
-  google.options({ auth });
+  const slides = google.slides({ version: 'v1' })
+  google.options({ auth })
 
   try {
     // Create a new Google Slides presentation
@@ -21,13 +21,13 @@ export async function createSlideDeck({
       requestBody: {
         title: courseName + new Date().toISOString(),
       },
-    });
+    })
 
-    const presentationId = await response.data.presentationId;
+    const presentationId = await response.data.presentationId
 
     if (!presentationId) {
-      console.error("Failed to create presentation");
-      return;
+      console.error('Failed to create presentation')
+      return
     }
 
     await slides.presentations.batchUpdate({
@@ -35,12 +35,12 @@ export async function createSlideDeck({
       requestBody: {
         requests,
       },
-    });
+    })
 
-    console.log(`Created presentation with ID: ${presentationId}`);
+    console.log(`Created presentation with ID: ${presentationId}`)
 
-    return presentationId;
+    return presentationId
   } catch (error) {
-    console.error("Error creating presentation:", error);
+    console.error('Error creating presentation:', error)
   }
 }
